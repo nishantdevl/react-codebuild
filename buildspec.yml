@@ -13,7 +13,10 @@ phases:
     commands:
         # run build script
         - npm run build
-     
+  post_build:
+    commands:
+      - echo "Updating files in the S3 bucket..."
+      - aws s3 sync dist/react-codebuild/ s3://codebuildex --delete   
 artifacts:
   # include all files required to run the application
   files:
