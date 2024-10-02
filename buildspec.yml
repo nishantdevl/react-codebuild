@@ -13,11 +13,6 @@ phases:
       - echo "Building the React Project"
       - npm run build
       - echo "Done building the project ==> Exporting artifcats"
-  post_build:
-    commands:
-      - echo "Updating files in the S3 bucket..."
-      - aws s3 sync dist/codebuildex/ s3:/codebuildex/ --delete
-
 artifacts:
   files:
     - '**/*'
